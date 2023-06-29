@@ -1,0 +1,37 @@
+@KnowledgeBase
+Version ::
+	metakbinfo(version) implies metakbinfo_data(test_web_service);
+
+E001_Clause_ToBe ::
+    cop(W1, P1, be, Pbe),
+    nsubj(W1, P1, W2, P2) implies clause_tobe(W1, P1, W2, P2);
+
+E002_Cons_ToBe ::
+    root(root, 0, W1, P1),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(  head, 0,
+                W1, args, vph_1, next,
+                W2, args, vph_1);
+
+E003_Ant_ToBe ::
+    advcl(T1, T2, W1, P1),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(  body, 1, W1,
+                args, vph_1, next,
+                W2, args, vph_1);
+
+E004_Cons_ToBe_NER ::
+    root(root, 0, W1, P1),
+    token(T1, T2, ner, _, W2, P2),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(head, 0, W1, args, W2);
+
+E005_Ant_ToBe_NER ::
+    advcl(T1, T2, W1, P1),
+    token(T3, T4, ner, NTAG, W2, P2),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(body, 1, W1, args, W2);
+
+E006_Clause_ToBe_Verb ::
+    aux(W1, P1, be, Pbe),
+    nsubj(W1, P1, W2, P2) implies clause_tobe(W1, P1, W2, P2);
+
+E007::ruleterms(body, 1, W1, args, vph_1, next, W2, args, vph_1) # ruleterms(body, 1, W3, args, W4);
+
+E008::ruleterms(head, 0, W1, args, vph_1, next, W2, args, vph_1) # ruleterms(head, 0, W3, args, W4);

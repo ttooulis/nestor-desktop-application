@@ -1,0 +1,162 @@
+@KnowledgeBase
+
+Version ::
+	metakbinfo(version) implies metakbinfo_data(nestor_star);
+
+
+C0010 ::
+	aux(W1, P1, W2, P2) implies general_aux(W1, P1, W2, P2);
+
+C0012 ::
+	auxpass(W1, P1, W2, P2) implies general_aux(W1, P1, W2, P2);
+
+
+C0022 ::
+	nsubj(W1, P1, W2, P2) implies general_nsubj(W1, P1, W2, P2);
+
+C0024 ::
+	nsubjpass(W1, P1, W2, P2) implies general_nsubj(W1, P1, W2, P2);
+
+
+C0030 ::
+	general_nsubj(W1, P1, W2, P2) implies general_named_nsubj(W1, P1, W2, no);
+
+C0032 ::
+	general_nsubj(W1, P1, W2, P2),
+	sentence_index(SentenceIndex),
+	coref(W3, W2, P2, SentenceIndex) implies general_named_nsubj(W1, P1, W3, yes);
+
+C0038 ::
+	general_named_nsubj(W1, P1, W2, no) # general_named_nsubj(W1, P1, W3, yes);
+
+
+C0040 ::
+	general_named_nsubj(W1, P1, W2, COREF) implies compound_nsubj(_, W1, P1, W2);
+
+C0042 ::
+	general_aux(W1, P1, W2, P2),
+	token(OW2, POS_TAG, nner, o, W2, P2),
+	general_named_nsubj(W1, P1, W3, COREF) implies compound_nsubj(W2, W1, P1, W3);
+
+C0044 ::
+	compound_nsubj(Wpre, W1, P1, W2) # compound_nsubj(_, W1, P1, W2);
+
+
+C0050 ::
+	dobj(W1, P1, W2, P2) implies named_dobj(W1, P1, W2, no);
+
+C0052 ::
+	dobj(W1, P1, W2, P2), sentence_index(SentenceIndex), coref(W3, W2, P2, SentenceIndex) implies named_dobj(W1, P1, W3, yes);
+
+C0054 ::
+	named_dobj(W1, P1, W2, no) # named_dobj(W1, P1, W3, yes);
+
+
+C0060 ::
+	nmod(W1, P1, W2, P2) implies named_nmod(W1, P1, W2, no);
+
+C0062 ::
+	nmod(W1, P1, W2, P2), sentence_index(SentenceIndex), coref(W3, W2, P2, SentenceIndex) implies named_nmod(W1, P1, W3, yes);
+
+C0068 ::
+	named_nmod(W1, P1, W2, no) # named_nmod(W1, P1, W3, yes);
+
+
+C0072 ::
+	root(root, 0, W1, P1) implies signed_root(_, W1, P1);
+
+C0074 ::
+	root(root, 0, W1, P1), neg(W1, P1, NEG_LEMMA, P_NL) implies signed_root(neg, W1, P1);
+
+C0076 ::
+	signed_root(neg, W1, P1) # signed_root(_, W1, P1);
+
+
+
+
+C0112 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2) implies story_predicate(Sign, Wpre, W1, P1, W2);
+
+
+
+C0122 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2),
+	named_dobj(W1, P1, W3, COREF) implies story_predicate(Sign, Wpre, W1, P1, W2, W3);
+
+C0124 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2),
+	named_nmod(W1, P1, W3, COREF) implies story_predicate(Sign, Wpre, W1, P1, W2, W3);
+
+
+
+C0132 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2),
+	named_dobj(W1, P1, W3, COREF),
+	named_nmod(W1, P1, W4, COREF) implies story_predicate(Sign, Wpre, W1, P1, W2, W3, W4);
+
+C0134 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2),
+	xcomp(W1, P1, W3, P3),
+	named_nmod(W1, P1, W4, COREF) implies story_predicate(Sign, Wpre, W1, P1, W2, W3, W4);
+
+C0136 ::
+	signed_root(Sign, W1, P1),
+	compound_nsubj(Wpre, W1, P1, W2),
+	xcomp(W1, P1, W3, P3),
+	named_dobj(W3, P3, W4, COREF) implies story_predicate_f(Sign, Wpre, W1, P1, W2, W3, W4);
+
+
+
+C0912 :: story_predicate(Sign, Wpre, W1, P1, W2) # story_predicate(Sign, Wpre, W1, P1, W2, W3);
+	
+C0914 :: story_predicate(Sign, Wpre, W1, P1, W2, W3) # story_predicate(Sign, Wpre, W1, P1, W2, W3, W4);
+	
+C0916 :: story_predicate(Sign, Wpre, W1, P1, W2) # story_predicate(Sign, Wpre, W1, P1, W2, W3, W4);
+	
+C0918 :: story_predicate(Sign, Wpre, W1, P1, W2, W3) # story_predicate_f(Sign, Wpre, W1, P1, W2, W3, W4);
+
+C0920 :: story_predicate(Sign, Wpre, W1, P1, W2) # story_predicate_f(Sign, Wpre, W1, P1, W2, W3, W4);
+
+C0922 :: story_predicate(Sign, Wpre, W1, P1, W2, W3, W4) # story_predicate_f(Sign, Wpre, W1, P1, W2, W3, W4);
+
+
+
+
+R0010 ::
+	story_predicate(Sign, Wpre, W1, P1, W2) implies ruleterms(head, 0, Sign, Wpre, W1, args, W2);
+
+R0020 ::
+	story_predicate(Sign, Wpre, W1, P1, W2, W3) implies ruleterms(head, 0, Sign, Wpre, W1, args, W2, W3);
+
+R0030 ::
+	story_predicate(Sign, Wpre, W1, P1, W2, W3, W4) implies ruleterms(head, 0, Sign, Wpre, W1, args, W2, W3, W4);
+
+R0040 ::
+	story_predicate_f(Sign, Wpre, W1, P1, W2, W3, W4) implies ruleterms(head, 0, Sign, Wpre, W1, args, W2, func, W3, W4);
+
+
+
+R0112 ::
+	token(OW1, POS_TAG, nner, o, W1, P1),
+	?isMemberOf(POS_TAG, nn_nns_nnp_nnps),
+	sentence_index(SentenceIndex),
+	coref(W2, W1, P1, SentenceIndex) implies ruleterms(constant, 1, is, W1, args, W2, next, at_always);
+
+R0120 ::
+	token(OW1, POS_TAG, ner, P, W1, P1),
+	sentence_index(SentenceIndex),
+	coref(W2, W1, P1, SentenceIndex) implies ruleterms(constant, 1, is, P, args, W2, next, at_always);
+	
+
+@Code
+	function isMemberOf(listElement, listString) {
+		const list = listString.split('_');
+
+		return list.includes(listElement);
+	}
+

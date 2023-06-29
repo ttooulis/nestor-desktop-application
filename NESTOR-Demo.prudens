@@ -1,0 +1,32 @@
+@KnowledgeBase
+Version ::
+	metakbinfo(version) implies metakbinfo_data(nESTOR_Demonstration);
+
+E001 ::
+    cop(W1, P1, be, PBe),
+    nsubj(W1, P1, W2, P2) implies clause_tobe(W1, P1, W2, P2);
+
+E002 ::
+    root(root, 0, W1, P1),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(head, 0, W1, args, vph_1, next, W2, args, vph_1);
+
+E003 ::
+    advcl(WParent, PParent, W1, P1),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(body, 1, W1, args, vph_1, next, W2, args, vph_1);
+
+E004 ::
+    root(root, 0, W1, P1),
+    token(Word, POS_Tag, ner, NER_Tag, W2, P2),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(head, 0, W1, args, W2);
+
+E005 ::
+    advcl(WParent, PParent, W1, P1),
+    token(Word, POS_Tag, ner, NER_Tag, W2, P2),
+    clause_tobe(W1, P1, W2, P2) implies ruleterms(body, 1, W1, args, W2);
+
+E006 :: ruleterms(TYPE, GROUP, W1, args, W2) # ruleterms(TYPE, GROUP, W1, args, vph_1, next, W2, args, vph_1);
+
+E007 ::
+    aux(W1, P1, be, PBe),
+    nsubj(W1, P1, W2, P2) implies clause_tobe(W1, P1, W2, P2);
+

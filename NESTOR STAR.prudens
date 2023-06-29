@@ -1,0 +1,4 @@
+Version ::
+	metakbinfo(version) implies metakbinfo_data('NESTOR STAR');
+
+R1 :: token(W1, _, ner, P, _, _) implies ruleterms(constant, 1, is_, P, args, W1, next, ' at always');

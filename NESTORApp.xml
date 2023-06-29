@@ -1,0 +1,4 @@
+<NLRGApp>
+    <ParseDataFile>NLPData.txt</ParseDataFile>
+    <PredicatesFile>Predicates.txt</PredicatesFile>
+</NLRGApp>

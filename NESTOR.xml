@@ -1,0 +1,17 @@
+<NLRG>
+    <Annotators>tokenize,ssplit,pos,parse,depparse,lemma,ner,coref</Annotators>
+	<Algorithm>statistical</Algorithm>
+	<ssplit.eolonly>false</ssplit.eolonly>
+	<NeckSymbol>implies</NeckSymbol>
+	<TranslationPolicyType>prudensjs-web</TranslationPolicyType>
+	<GenerateName>0</GenerateName>
+	<PredicateNameConcatChar>_</PredicateNameConcatChar>
+	<PredicateNameCapitalize>0</PredicateNameCapitalize>
+	<PredicateNameCapitalizeExceptions>'-'|'!'|'('|')'</PredicateNameCapitalizeExceptions>
+	<RuleImportance>desc</RuleImportance>
+	<NegationOperator>neg</NegationOperator>
+	<VersionPredicate>metakbinfo(version);</VersionPredicate>
+	<VersionDataPredicate>metakbinfo_data</VersionDataPredicate>
+	<TranslationPolicyFile>Translation-Policy-NESTOR_STAR.prudens</TranslationPolicyFile>
+	<AlwaysPrintResponseBody>1</AlwaysPrintResponseBody>
+</NLRG>
