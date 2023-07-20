@@ -14,12 +14,10 @@ Standford CoreNLP Library: stanford-corenlp-full-3.9.1/stanford-corenlp-3.9.1.ja
 Standford CoreNLP Models Library: stanford-corenlp-3.9.1-models.jar
 
 # Download Application Binaries
-===============================
 You can download NESTOR Desktop Application using the following URL:
 https://tinyurl.com/nestor-desktop-app
 
 # Running and using the application
-===================================
 This description is not ment to be a complete manual for NESTOR application or NESTOR library but as start-up help instructions.
 
 Application requirements
